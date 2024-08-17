@@ -26,21 +26,34 @@ export const getClerkUsers = async ({userIds}: {userIds: string[]}) => {
 }
 
 export const getDocumentUsers = async ({ roomId, currentUser, text }: { roomId: string, currentUser: string, text: string }) => {
-    try {
-      const room = await liveblocks.getRoom(roomId);
+  try {
+    const room = await liveblocks.getRoom(roomId);
   
-      const users = Object.keys(room.usersAccesses).filter((email) => email !== currentUser);
+    const users = Object.keys(room.usersAccesses).filter((email) => email !== currentUser);
   
-      if(text.length) {
-        const lowerCaseText = text.toLowerCase();
+    if(text.length) {
+      const lowerCaseText = text.toLowerCase();
   
-        const filteredUsers = users.filter((email: string) => email.toLowerCase().includes(lowerCaseText))
+      const filteredUsers = users.filter((email: string) => email.toLowerCase().includes(lowerCaseText))
   
-        return parseStringify(filteredUsers);
-      }
-  
-      return parseStringify(users);
-    } catch (error) {
-      console.log(`Error fetching document users: ${error}`);
+      return parseStringify(filteredUsers);
     }
+  
+    return parseStringify(users);
+  } catch (error) {
+    console.log(`Error fetching document users: ${error}`);
+  } 
 }
+
+export const getClerkUserByEmail = async (email: string) => {
+  try {
+    const users = await clerkClient.users.getUserList({
+      emailAddress: [email],
+    });
+
+    return users.data.length > 0 ? users.data[0] : null;
+  } catch (error) {
+    console.error("Error fetching user by email:", error);
+    return null;
+  }
+};

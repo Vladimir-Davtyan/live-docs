@@ -26,9 +26,9 @@ const Provider = ({children}: {children: ReactNode}) => {
       return roomUsers;
     }}
     >
-        <ClientSideSuspense fallback={<Loader />}>
+      <ClientSideSuspense fallback={<Loader />}>
         {children}
-        </ClientSideSuspense>
+      </ClientSideSuspense>
     </LiveblocksProvider>
   );
 };

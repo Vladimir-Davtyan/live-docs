@@ -49,6 +49,19 @@ declare type SearchParamProps = {
     creatorId: string;
     currentUserType: UserType;
   };
+
+  declare type NotRegisteredModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    email: string;
+  };
+
+  declare type ExportModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    roomId: string;
+    userId: string;
+  };
   
   declare type HeaderProps = {
     children: React.ReactNode;

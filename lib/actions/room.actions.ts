@@ -7,8 +7,7 @@ import { getAccessType, parseStringify } from '../utils';
 import { redirect } from 'next/navigation';
 import { Document, Packer, Paragraph } from 'docx'; 
 import jsPDF from 'jspdf';
-// import { withLexicalDocument } from '@liveblocks/node-lexical';
-// import { Node } from 'lexical';
+import { clerkClient } from '@clerk/nextjs/server';
 
 export const createDocument = async ({ userId, email }: CreateDocumentParams) => {
     const roomId = nanoid();
@@ -38,36 +37,6 @@ export const createDocument = async ({ userId, email }: CreateDocumentParams) =>
     }
 }
 
-// export const getDocument = async ({ roomId, userId }: { roomId: string; userId: string }) => {
-//   try {
-//     const room = await liveblocks.getRoom(roomId);
-
-//     const hasAccess = Object.keys(room.usersAccesses).includes(userId);
-//     if (!hasAccess) {
-//       throw new Error('You do not have access to this document');
-//     }
-
-//     // Use withLexicalDocument with a callback to retrieve the Lexical editor state
-//     const lexicalContent = await withLexicalDocument(room, (editorState) => {
-//       // This callback function is called with the editor state
-//       // You can return the content in the format you need here
-//       return editorState.read(() => {
-//         const root = editorState._nodeMap.get('root') as Node;
-//         return root ? root.toJSON() : null;
-//       });
-//     });
-
-//     if (!lexicalContent) {
-//       throw new Error('No content found in the document');
-//     }
-
-//     return JSON.stringify(lexicalContent);
-//   } catch (error) {
-//     console.log(`Error happened while getting a room: ${error}`);
-//     throw error; // re-throw the error to handle it properly in calling functions
-//   }
-// };
-
 export const getDocument = async ({ roomId, userId }: { roomId: string; userId: string }) => {
   try {
       const room = await liveblocks.getRoom(roomId);
@@ -83,7 +52,6 @@ export const getDocument = async ({ roomId, userId }: { roomId: string; userId: 
     console.log(`Error happened while getting a room: ${error}`);
   }
 }
-
 
 export const updateDocument = async (roomId: string, title: string) => {
   try {
@@ -247,3 +215,25 @@ export const exportAsHTML = async (roomId: string, userId: string): Promise<stri
     throw error;
   }
 };
+
+// export const getClerkUserByEmail = async (email: string) => {
+//   try {
+//     const users = await clerkClient.users.getUserList({
+//       emailAddress: [email],
+//     });
+
+//     if (users.data.length > 0) {
+//       const user = users.data[0];
+//       return {
+//         id: user.id,
+//         name: user.firstName || user.lastName || "Unknown User",
+//         email: user.emailAddresses[0]?.emailAddress || email,
+//       };
+//     }
+
+//     return { userExists: false };
+//   } catch (error) {
+//     console.error("Error fetching user by email:", error);
+//     return { userExists: false, error: "Error occurred while fetching user" };
+//   }
+// };

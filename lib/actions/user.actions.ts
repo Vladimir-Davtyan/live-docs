@@ -51,9 +51,19 @@ export const getClerkUserByEmail = async (email: string) => {
       emailAddress: [email],
     });
 
-    return users.data.length > 0 ? users.data[0] : null;
+    if (users.data.length > 0) {
+      const user = users.data[0];
+      return {
+        userExists: true,
+        id: user.id,
+        name: user.firstName || user.lastName || "Unknown User",
+        email: user.emailAddresses[0]?.emailAddress || email,
+      };
+    } else {
+      return { userExists: false };
+    }
   } catch (error) {
     console.error("Error fetching user by email:", error);
-    return null;
+    return { userExists: false, error: "Error occurred while fetching user" };
   }
 };

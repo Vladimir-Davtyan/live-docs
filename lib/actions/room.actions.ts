@@ -215,25 +215,3 @@ export const exportAsHTML = async (roomId: string, userId: string): Promise<stri
     throw error;
   }
 };
-
-// export const getClerkUserByEmail = async (email: string) => {
-//   try {
-//     const users = await clerkClient.users.getUserList({
-//       emailAddress: [email],
-//     });
-
-//     if (users.data.length > 0) {
-//       const user = users.data[0];
-//       return {
-//         id: user.id,
-//         name: user.firstName || user.lastName || "Unknown User",
-//         email: user.emailAddresses[0]?.emailAddress || email,
-//       };
-//     }
-
-//     return { userExists: false };
-//   } catch (error) {
-//     console.error("Error fetching user by email:", error);
-//     return { userExists: false, error: "Error occurred while fetching user" };
-//   }
-// };

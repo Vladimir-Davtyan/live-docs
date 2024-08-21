@@ -41,12 +41,10 @@ const Home = async ({ searchParams }: { searchParams: { view?: string } }) => {
             />
           </div>
 
-          {/* View Toggle */}
           <div className="flex justify-end mb-4">
             <SelectViewType currentView={view} />
           </div>
 
-          {/* Document List */}
           {view === 'list' ? (
             <ul className="document-ul">
               {roomDocuments.data.map(({ id, metadata, createdAt }: any) => (

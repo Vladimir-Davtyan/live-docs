@@ -11,7 +11,7 @@ import Image from "next/image";
 import { updateDocument } from "@/lib/actions/room.actions";
 import Loader from "./loader";
 import ShareModal from "./ShareModal";
-import ExportModal from "./ExportModal";
+// import ExportModal from "./ExportModal";
 
 const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
   
@@ -118,7 +118,7 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
                 creatorId={roomMetadata.creatorId}
                 currentUserType={currentUserType}
               />
-              <ExportModal isOpen={isModalOpen} onClose={toggleModal} roomId={roomId} userId={userId}/>
+              {/* <ExportModal isOpen={isModalOpen} onClose={toggleModal} roomId={roomId} userId={userId}/> */}
               <SignedOut>
                 <SignInButton />
               </SignedOut>

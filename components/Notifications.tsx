@@ -20,7 +20,7 @@ const Notifications = () => {
         <Popover>
         <PopoverTrigger className="relative flex size-10 items-center justify-center rounded-lg">
             <Image
-            src="/assets/icons/bell.svg"
+            src="/assets/icons/inbox.svg"
             alt="Inbox"
             width={24}
             height={24}

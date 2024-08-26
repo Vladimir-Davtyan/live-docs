@@ -74,7 +74,7 @@ const ShareModal = ({
             Email address
           </Label>
           <div className="flex items-center gap-3">
-            <div className="flx flex-1 rounded-md bg-dark-400">
+            <div className="share-input-wrapper">
               <Input
                 id="email"
                 placeholder="Enter email address"

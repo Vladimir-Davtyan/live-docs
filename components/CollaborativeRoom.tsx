@@ -11,12 +11,13 @@ import Image from "next/image";
 import { updateDocument } from "@/lib/actions/room.actions";
 import Loader from "./loader";
 import ShareModal from "./ShareModal";
+import ThemeToggleButton from "./ThemeToggleButton";
 // import ExportModal from "./ExportModal";
 
 const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
   
   const { user } = useUser()
-  const userId = user?.id || '';
+  // const userId = user?.id || '';
 
   const [documentTitle, setdocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
@@ -118,6 +119,7 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
                 creatorId={roomMetadata.creatorId}
                 currentUserType={currentUserType}
               />
+              <ThemeToggleButton />
               {/* <ExportModal isOpen={isModalOpen} onClose={toggleModal} roomId={roomId} userId={userId}/> */}
               <SignedOut>
                 <SignInButton />

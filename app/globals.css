@@ -6,6 +6,7 @@
 @import "@liveblocks/react-lexical/styles.css"; 
 
 @import "../styles/dark-theme.css"; 
+/* @import "../styles/light-theme.css";  */
 
 @layer base {
   :root {
@@ -50,7 +51,7 @@
   }
 
   .shad-dialog {
-    @apply w-full max-w-[400px] rounded-xl border-none bg-doc bg-cover px-5 py-7 shadow-xl sm:min-w-[500px] !important;
+    @apply w-full max-w-[400px] rounded-xl border-none bg-dark-200 bg-cover px-5 py-7 shadow-xl sm:min-w-[500px] !important;
   }
 
   .shad-dialog button {
@@ -59,6 +60,10 @@
 
   .shad-select {
     @apply w-fit border-none bg-transparent text-blue-100 !important;
+  }
+
+  .choosen-type {
+    @apply border-none bg-dark-200;
   }
 
   .shad-select svg {
@@ -70,7 +75,11 @@
   }
 
   .shad-popover {
-    @apply w-[460px] border-none bg-dark-200 shadow-lg !important;
+    @apply w-[460px] border-none bg-dark-200 shadow-lg;
+  }
+
+  .shad-notification {
+    @apply bg-slate-900 text-white
   }
 
   .floating-toolbar {
@@ -102,7 +111,11 @@
   }
 
   .document-list-item {
-    @apply flex items-center justify-between gap-4 rounded-lg bg-doc bg-cover p-5 shadow-xl;
+    @apply flex items-center justify-between gap-4 rounded-lg bg-slate-900 bg-cover p-5 shadow-xl;
+  }
+
+  .document-item {
+    @apply hidden rounded-md p-2 sm:block bg-dark-500;
   }
 
   .document-list-empty {
@@ -110,11 +123,15 @@
   }
 
   .document-title-input {
-    @apply min-w-[78px] border-none bg-transparent px-0 text-left text-base font-semibold leading-[24px] focus-visible:ring-0 focus-visible:ring-offset-0 disabled:text-black sm:text-xl md:text-center !important;
+    @apply min-w-[78px] border-none bg-transparent px-0 text-base font-semibold leading-[24px] focus-visible:ring-0 focus-visible:ring-offset-0 disabled:text-black sm:text-xl md:text-center text-center !important;
   }
 
   .document-title {
     @apply line-clamp-1 border-dark-400 text-base font-semibold leading-[24px] sm:pl-0 sm:text-xl;
+  }
+
+  .delete-trigger {
+    @apply min-w-9 rounded-xl bg-transparent p-2 transition-all
   }
 
   .view-only-tag {
@@ -123,6 +140,10 @@
 
   .collaborators-list {
     @apply hidden items-center justify-end -space-x-3 overflow-hidden sm:flex;
+  }
+
+  .share-input-wrapper {
+    @apply flex flex-1 rounded-md bg-dark-400;
   }
 
   .share-input {
@@ -167,6 +188,14 @@
   .collaborative-room {
     @apply flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden;
   }
+
+  .list-username {
+    @apply line-clamp-1 text-sm font-semibold leading-4 text-white;
+  }
+
+  .lb-emoji .lb-comment-reaction-emoji {
+    color: #fff !important;
+  }
 }
 
 /* ======================== Clerk Override */
@@ -203,6 +232,23 @@
   height: 52px;
 }
 
+/* .cl-userButtonPopoverActionButton {
+  color: #111 !important;
+}
+
+.cl-userButtonPopoverMain, .cl-internal-13u79ez, .cl-internal-1mm78hd, .cl-internal-1bpck7g, .cl-navbar, .cl-button   {
+  background: #111;
+  color: #fff;
+}
+
+.cl-profilePage, .cl-headerTitle, .cl-internal-1n6wv4b, .cl-internal-1nutaqf, .cl-internal-1a21kn9, .cl-avatarImageActionsUpload, .cl-internal-1b7q1a1, .cl-internal-mr3aim {
+  color: #fff !important;
+}
+
+.cl-actionCard {
+  background: #111;
+} */
+
 /* ======================== Liveblocks Override */
 .lb-root {
   --lb-accent-subtle: #0b1527;
@@ -214,7 +260,7 @@
 .lb-thread-comments,
 .lb-composer,
 .lb-comment-reaction {
-  background-color: #0f1c34;
+  background-color: #0f1c34 !important;
   color: #fff;
 }
 
@@ -260,7 +306,7 @@
 .lb-dropdown-item,
 .lb-dropdown-item-icon,
 .lb-composer-editor {
-  color: #fff;
+  color: #fff !important;
 }
 
 .lb-composer-action {
@@ -303,4 +349,281 @@
 
 .lb-elevation {
   background: #0f1c34;
+}
+
+.lb-emoji-picker-category-header>span {
+  color: #fff;
+}
+
+.lb-emoji-picker-search-container {
+  color: #fff;
+}
+
+.lb-emoji-picker-category-header-title {
+  color: #fff;
+}
+
+@layer base {
+  :root.light-theme {
+    background-color: #FAFAFA;
+    color: #000000;
+    margin: 0;
+  }
+
+  .light-theme .header {
+    background-color: #FAFAFA  
+  }
+
+  .light-theme .document-list-empty {
+    background-color: #FAFAFA;
+  }
+
+  .light-theme .document-item {
+    @apply bg-slate-50;
+  }
+
+  .light-theme .document-list-item {
+    @apply bg-white;
+  }
+
+  .light-theme .shad-popover {
+    @apply bg-white shadow-2xl;
+  }
+
+  .light-theme .shad-notification {
+    @apply bg-slate-50 text-black;
+  }
+
+  .light-theme .shad-dialog {
+    @apply bg-white !important;
+  }
+
+  .light-theme .delete-trigger {
+    @apply hover:bg-gray-50;
+  }
+
+  .light-theme .view-only-tag {
+    @apply bg-gray-100 text-dark-100;
+  }
+
+  .light-theme .floating-toolbar {
+    @apply bg-white !important;
+  }
+  .light-theme .toolbar-wrapper {
+    @apply bg-white;
+  }
+  .light-theme .toolbar {
+    @apply bg-white;
+  }
+  .light-theme .toolbar-item {
+    @apply bg-black hover:bg-transparent;
+  }
+
+  .light-theme .toolbar-item:hover:not([disabled]) {
+    @apply bg-gray-100;
+  }
+  .light-theme .toolbar-item.active {
+    @apply bg-gray-100;
+  }
+  .light-theme .format {
+    @apply text-gray-600 filter-none;
+  }
+
+  .light-theme .toolbar-item.active {
+    @apply bg-gray-200 !important;
+  }
+
+  .light-theme .lb-root {
+    --lb-accent-subtle: #fff;
+    --lb-dynamic-background: #fff;
+  }
+  
+  .light-theme .lb-comment,
+  .lb-thread-comments,
+  .lb-composer,
+  .lb-comment-reaction {
+    background-color: #fff !important;
+    color: #111 !important;
+  }
+  
+  .light-theme .lb-button {
+    --lb-foreground-moderate: #111;
+  }
+  
+  .light-theme .lb-button:where([data-variant="primary"]) {
+    background-color: #fff;
+    color: #111;
+    padding: 8px;
+  }
+  
+  .light-theme .lb-button:where(
+      [data-variant="default"]:not(
+          :is(
+              :enabled:hover,
+              :enabled:focus-visible,
+              [aria-expanded="true"],
+              [aria-selected="true"]
+            )
+        )
+    ) {
+    color: #111;
+  }
+  
+  .light-theme .lb-button:where(
+      :enabled:hover,
+      :enabled:focus-visible,
+      [aria-expanded="true"],
+      [aria-selected="true"]
+    ) {
+    --lb-button-background: #fff;
+  
+    color: #111;
+  }
+
+  .light-theme .lb-comment-body,
+  .lb-dropdown-item,
+  .lb-dropdown-item-icon,
+  .lb-composer-editor {
+    color: #111 !important;
+  }
+
+  .light-theme .lb-comment-content {
+    background: #fff;
+  }
+  
+  .light-theme .lb-comment-date,
+  .lb-lexical-mention-suggestion-user,
+  .lb-composer-suggestions-list-item,
+  .lb-inbox-notification-date,
+  .lb-comment-author {
+    color: #111;
+  }
+  
+  .light-theme .data-liveblocks-portal {
+    color: #111 !important;
+  }
+
+  .light-theme .lb-composer-editor :where([data-placeholder]) {
+    color: #111;
+  }
+  
+  .light-theme .lb-lexical-floating-threads-thread:where([data-resolved]) {
+    opacity: 40%;
+  }
+  
+  .light-theme .lb-elevation {
+    background: #fff;
+  }
+
+  .light-theme .lb-emoji-picker-category-header {
+    background: #fff !important;
+    color: #111;
+  }
+
+  .light-theme .editor-inner {
+    @apply bg-white shadow-xl;
+  }
+
+  .light-theme .editor-paragraph {
+    @apply text-black;
+  }
+  .light-theme .comment-composer {
+    background-color: #fff !important;
+    color: #111 !important;
+  }
+
+  .light-theme .comments-container > :not([hidden]) ~ :not([hidden]) {
+    background-color: #fff !important;
+  }
+  .light-theme .lb-composer {
+    background-color: #fff !important;
+    color: #111 !important;
+  }
+
+  .light-theme .lb-composer-editor {
+    color: #111 !important;
+  }
+
+  .light-theme .lb-comment-reaction {
+    background-color: #fff !important;
+  }
+
+  .light-theme .lb-dropdown-item {
+    background-color: #3673FF;
+  }
+
+  .light-theme .lb-lexical-thread-mark {
+    color: #605c5c;
+    background-color: #FAFAFA;
+    padding: 1px;
+    border-radius: 20px;
+  }
+
+  .light-theme .lb-composer-action {
+    background-color: #3673FF;
+    color: #fff;
+  }
+
+  .light-theme .share-input-wrapper {
+    background-color: #fff !important;
+    color: #111;
+    border: 1px solid #111;
+  }
+
+  .light-theme .share-input {
+    background-color: #fff !important;
+  }
+
+  .light-theme .shad-select {
+    @apply text-blue-400 !important;
+  }
+
+  .light-theme .list-username {
+    @apply text-black
+  }
+
+  .light-theme .choosen-type {
+    @apply text-black bg-white;
+  }
+
+  .light-theme .shad-select-item {
+    @apply text-black bg-white hover:bg-slate-100 !important;
+  }
+
+  .light-theme .editor-input {
+    color: #111;
+  }
+  .light-theme .lb-emoji-picker-category-header-title {
+    color: #111;
+  }
+
+  /* .light-theme .cl-cardBox,
+  .cl-signIn-start,
+  .cl-signUp-start,
+  .cl-footer,
+  .cl-pageScrollBox  {
+    background: #fff;
+    color: #111;
+  }
+
+  .light-theme .cl-internal-1hp5nqm {
+    background-color: #fff;
+  }
+
+  .light-theme .cl-internal-16rjnjd, .cl-userButtonPopoverActionButton {
+    color: #111 !important;
+  }
+
+  .light-theme .cl-userButtonPopoverMain, .cl-internal-13u79ez, .cl-internal-1mm78hd, .cl-internal-1bpck7g, .cl-navbar, .cl-button   {
+    background: #fff;
+    color: #111;
+  }
+
+  .light-theme .cl-profilePage, .cl-headerTitle, .cl-internal-1n6wv4b, .cl-internal-1nutaqf, .cl-internal-1a21kn9, .cl-avatarImageActionsUpload, .cl-internal-1b7q1a1, .cl-internal-mr3aim {
+    color: #111 !important;
+  }
+
+  .light-theme .cl-actionCard {
+    background: #fff;
+  } */
 }

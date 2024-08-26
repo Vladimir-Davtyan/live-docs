@@ -20,10 +20,10 @@ const Notifications = () => {
         <Popover>
         <PopoverTrigger className="relative flex size-10 items-center justify-center rounded-lg">
             <Image
-            src="/assets/icons/inbox.svg"
-            alt="Inbox"
-            width={24}
-            height={24}
+                src="/assets/icons/inbox.svg"
+                alt="Inbox"
+                width={24}
+                height={24}
             />
             {count > 0 && (
                 <div className="absolute right-2 top-2 z-20 size-2 rounded-full bg-blue-500"></div>
@@ -46,7 +46,7 @@ const Notifications = () => {
                             <InboxNotification
                                 key={notification.id}
                                 inboxNotification={notification}
-                                className="bg-200 text-white"
+                                className="shad-notification"
                                 href={`/documents/${notification.roomId}`}
                                 showActions={false}
                                 kinds={{
